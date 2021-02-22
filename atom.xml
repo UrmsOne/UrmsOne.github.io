@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>UXCloudMax</title>
+  <icon>https://www.gravatar.com/avatar/6b469c293c04d064f2d643f77804ce5a</icon>
+  <subtitle>Everything on K8s</subtitle>
+  <link href="http://example.com/atom.xml" rel="self"/>
+  
+  <link href="http://example.com/"/>
+  <updated>2021-02-08T06:39:02.057Z</updated>
+  <id>http://example.com/</id>
+  
+  <author>
+    <name>urmsone of UXCloudMax Group</name>
+    <email>uxcloudmax@163.com</email>
+  </author>
+  
+  <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>test</title>
+    <link href="http://example.com/2021/02/08/test/"/>
+    <id>http://example.com/2021/02/08/test/</id>
+    <published>2021-02-08T06:38:13.000Z</published>
+    <updated>2021-02-08T06:39:02.057Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;test&quot;&gt;&lt;a href=&quot;#test&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="web" scheme="http://example.com/categories/web/"/>
+    
+    
+    <category term="test" scheme="http://example.com/tags/test/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Hello World</title>
+    <link href="http://example.com/2021/02/08/hello-world/"/>
+    <id>http://example.com/2021/02/08/hello-world/</id>
+    <published>2021-02-08T06:26:02.836Z</published>
+    <updated>2021-02-08T06:26:02.836Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.io/docs/&quot;&gt;documentation&lt;/a&gt;</summary>
+        
+      
+    
+    
+    
+    <category term="web" scheme="http://example.com/categories/web/"/>
+    
+    
+    <category term="hello" scheme="http://example.com/tags/hello/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>post title with whitespace</title>
+    <link href="http://example.com/2021/02/08/post-title-with-whitespace/"/>
+    <id>http://example.com/2021/02/08/post-title-with-whitespace/</id>
+    <published>2021-02-08T06:19:01.000Z</published>
+    <updated>2021-02-08T06:20:07.148Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;Quick-Start&quot;&gt;&lt;a href=&quot;#Quick-Start&quot; class=&quot;headerlink&quot; title=&quot;Quick Start&quot;&gt;&lt;/a&gt;Quick Start&lt;/h2&gt;&lt;h3 id=&quot;Create-a-new-post&quot;&gt;&lt;a</summary>
+        
+      
+    
+    
+    
+    
+    <category term="ajfjsfja" scheme="http://example.com/tags/ajfjsfja/"/>
+    
+  </entry>
+  
+</feed>
