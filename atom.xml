@@ -3,14 +3,14 @@
   <title>UXCloudMax</title>
   <icon>https://www.gravatar.com/avatar/6b469c293c04d064f2d643f77804ce5a</icon>
   <subtitle>Everything on K8s</subtitle>
-  <link href="http://example.com/atom.xml" rel="self"/>
+  <link href="https://urmsone.github.io/atom.xml" rel="self"/>
   
-  <link href="http://example.com/"/>
+  <link href="https://urmsone.github.io/"/>
   <updated>2021-02-08T06:39:02.057Z</updated>
-  <id>http://example.com/</id>
+  <id>https://urmsone.github.io/</id>
   
   <author>
-    <name>urmsone of UXCloudMax Group</name>
+    <name>UXCloudMax Group</name>
     <email>uxcloudmax@163.com</email>
   </author>
   
@@ -18,8 +18,8 @@
   
   <entry>
     <title>test</title>
-    <link href="http://example.com/2021/02/08/test/"/>
-    <id>http://example.com/2021/02/08/test/</id>
+    <link href="https://urmsone.github.io/2021/02/08/test/"/>
+    <id>https://urmsone.github.io/2021/02/08/test/</id>
     <published>2021-02-08T06:38:13.000Z</published>
     <updated>2021-02-08T06:39:02.057Z</updated>
     
@@ -34,19 +34,19 @@
     
     
     
-    <category term="web" scheme="http://example.com/categories/web/"/>
+    <category term="web" scheme="https://urmsone.github.io/categories/web/"/>
     
     
-    <category term="test" scheme="http://example.com/tags/test/"/>
+    <category term="test" scheme="https://urmsone.github.io/tags/test/"/>
     
   </entry>
   
   <entry>
     <title>Hello World</title>
-    <link href="http://example.com/2021/02/08/hello-world/"/>
-    <id>http://example.com/2021/02/08/hello-world/</id>
+    <link href="https://urmsone.github.io/2021/02/08/hello-world/"/>
+    <id>https://urmsone.github.io/2021/02/08/hello-world/</id>
     <published>2021-02-08T06:26:02.836Z</published>
-    <updated>2021-02-08T06:26:02.836Z</updated>
+    <updated>2021-02-22T06:59:39.651Z</updated>
     
     
       
@@ -59,17 +59,17 @@
     
     
     
-    <category term="web" scheme="http://example.com/categories/web/"/>
+    <category term="web" scheme="https://urmsone.github.io/categories/web/"/>
     
     
-    <category term="hello" scheme="http://example.com/tags/hello/"/>
+    <category term="hello" scheme="https://urmsone.github.io/tags/hello/"/>
     
   </entry>
   
   <entry>
     <title>post title with whitespace</title>
-    <link href="http://example.com/2021/02/08/post-title-with-whitespace/"/>
-    <id>http://example.com/2021/02/08/post-title-with-whitespace/</id>
+    <link href="https://urmsone.github.io/2021/02/08/post-title-with-whitespace/"/>
+    <id>https://urmsone.github.io/2021/02/08/post-title-with-whitespace/</id>
     <published>2021-02-08T06:19:01.000Z</published>
     <updated>2021-02-08T06:20:07.148Z</updated>
     
@@ -85,7 +85,7 @@
     
     
     
-    <category term="ajfjsfja" scheme="http://example.com/tags/ajfjsfja/"/>
+    <category term="ajfjsfja" scheme="https://urmsone.github.io/tags/ajfjsfja/"/>
     
   </entry>
   
