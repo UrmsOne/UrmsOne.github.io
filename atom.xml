@@ -6,7 +6,7 @@
   <link href="https://urmsone.github.io/atom.xml" rel="self"/>
   
   <link href="https://urmsone.github.io/"/>
-  <updated>2021-02-22T12:44:13.740Z</updated>
+  <updated>2021-03-04T13:30:08.442Z</updated>
   <id>https://urmsone.github.io/</id>
   
   <author>
@@ -17,39 +17,11 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>test</title>
-    <link href="https://urmsone.github.io/2021/02/08/test/"/>
-    <id>https://urmsone.github.io/2021/02/08/test/</id>
-    <published>2021-02-08T06:38:13.000Z</published>
-    <updated>2021-02-22T12:44:13.740Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h2 id=&quot;test&quot;&gt;&lt;a href=&quot;#test&quot; class=&quot;headerlink&quot; title=&quot;test&quot;&gt;&lt;/a&gt;test&lt;/h2&gt;&lt;ul&gt;
-&lt;li&gt;fsa&lt;/li&gt;
-&lt;li&gt;fslfjk&lt;/li&gt;
-&lt;li&gt;“&lt;a</summary>
-        
-      
-    
-    
-    
-    <category term="web" scheme="https://urmsone.github.io/categories/web/"/>
-    
-    
-    <category term="test" scheme="https://urmsone.github.io/tags/test/"/>
-    
-  </entry>
-  
-  <entry>
     <title>Hello World</title>
-    <link href="https://urmsone.github.io/2021/02/08/hello-world/"/>
-    <id>https://urmsone.github.io/2021/02/08/hello-world/</id>
-    <published>2021-02-08T06:26:02.836Z</published>
-    <updated>2021-02-22T06:59:39.651Z</updated>
+    <link href="https://urmsone.github.io/2021/03/04/hello-world/"/>
+    <id>https://urmsone.github.io/2021/03/04/hello-world/</id>
+    <published>2021-03-04T13:30:08.442Z</published>
+    <updated>2021-03-04T13:30:08.442Z</updated>
     
     
       
@@ -65,30 +37,30 @@
     <category term="web" scheme="https://urmsone.github.io/categories/web/"/>
     
     
-    <category term="hello" scheme="https://urmsone.github.io/tags/hello/"/>
-    
   </entry>
   
   <entry>
-    <title>post title with whitespace</title>
-    <link href="https://urmsone.github.io/2021/02/08/post-title-with-whitespace/"/>
-    <id>https://urmsone.github.io/2021/02/08/post-title-with-whitespace/</id>
-    <published>2021-02-08T06:19:01.000Z</published>
-    <updated>2021-02-08T06:20:07.148Z</updated>
+    <title>Go进阶编程之Go调用C++(Linux)</title>
+    <link href="https://urmsone.github.io/2021/03/04/Advanced-go-call-cpp/"/>
+    <id>https://urmsone.github.io/2021/03/04/Advanced-go-call-cpp/</id>
+    <published>2021-03-04T13:25:13.000Z</published>
+    <updated>2021-03-04T13:28:01.689Z</updated>
     
     
       
       
         
         
-    <summary type="html">&lt;h2 id=&quot;Quick-Start&quot;&gt;&lt;a href=&quot;#Quick-Start&quot; class=&quot;headerlink&quot; title=&quot;Quick Start&quot;&gt;&lt;/a&gt;Quick Start&lt;/h2&gt;&lt;h3 id=&quot;Create-a-new-post&quot;&gt;&lt;a</summary>
+    <summary type="html">&lt;h1 id=&quot;Go进阶编程之Go调用C-（Linux）&quot;&gt;&lt;a href=&quot;#Go进阶编程之Go调用C-（Linux）&quot; class=&quot;headerlink&quot;</summary>
         
       
     
     
     
+    <category term="Go语言" scheme="https://urmsone.github.io/categories/Go%E8%AF%AD%E8%A8%80/"/>
     
-    <category term="ajfjsfja" scheme="https://urmsone.github.io/tags/ajfjsfja/"/>
+    
+    <category term="Go" scheme="https://urmsone.github.io/tags/Go/"/>
     
   </entry>
   

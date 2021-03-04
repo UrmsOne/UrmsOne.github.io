@@ -2,7 +2,7 @@
 <search>
   <entry>
     <title>Hello World</title>
-    <url>/2021/02/08/hello-world/</url>
+    <url>/2021/03/04/hello-world/</url>
     <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
 <h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
 <p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
@@ -16,40 +16,88 @@
       <categories>
         <category>web</category>
       </categories>
-      <tags>
-        <tag>hello</tag>
-      </tags>
   </entry>
   <entry>
-    <title>post title with whitespace</title>
-    <url>/2021/02/08/post-title-with-whitespace/</url>
-    <content><![CDATA[<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
-]]></content>
-      <tags>
-        <tag>ajfjsfja</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>test</title>
-    <url>/2021/02/08/test/</url>
-    <content><![CDATA[<h2 id="test"><a href="#test" class="headerlink" title="test"></a>test</h2><ul>
-<li>fsa</li>
-<li>fslfjk</li>
-<li>“<a href="https://g.yuque.com/kshare/2020/67aa9895-7006-4226-b501-14333c8369c2&quot;">https://g.yuque.com/kshare/2020/67aa9895-7006-4226-b501-14333c8369c2&quot;</a></li>
+    <title>Go进阶编程之Go调用C++(Linux)</title>
+    <url>/2021/03/04/Advanced-go-call-cpp/</url>
+    <content><![CDATA[<h1 id="Go进阶编程之Go调用C-（Linux）"><a href="#Go进阶编程之Go调用C-（Linux）" class="headerlink" title="Go进阶编程之Go调用C++（Linux）"></a>Go进阶编程之Go调用C++（Linux）</h1><h2 id="环境："><a href="#环境：" class="headerlink" title="环境："></a>环境：</h2><ul>
+<li>Ubuntu 18.04</li>
+<li>golang 1.14</li>
+<li>linux amd64<h2 id="一、了解调用流程"><a href="#一、了解调用流程" class="headerlink" title="一、了解调用流程"></a>一、了解调用流程</h2></li>
+<li>c调用c++动态链接库</li>
+<li>go通过cgo调用c</li>
+<li>从而达到go调用c++，其实是通过c来做中间层转换的功能</li>
 </ul>
+<h3 id="go调用c动态库"><a href="#go调用c动态库" class="headerlink" title="go调用c动态库"></a>go调用c动态库</h3><p>number目录结构</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">root@ubuntu:&#x2F;workspace&#x2F;gospace&#x2F;cppingo&#x2F;callso&#x2F;number# tree</span><br><span class="line">.</span><br><span class="line">├── libnumber.so</span><br><span class="line">├── main.go</span><br><span class="line">├── number.c</span><br><span class="line">└── number.h</span><br></pre></td></tr></table></figure>
+<p>number.h</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">int number_add_mod(int a, int b, int mod);</span><br><span class="line">number.c</span><br><span class="line">#include &quot;number.h&quot;</span><br><span class="line">int number_add_mod(int a, int b, int mod) &#123;</span><br><span class="line">    return (a+b)%mod;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>main.go</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;*</span><br><span class="line">@Author: urmsone urmsone@163.com</span><br><span class="line">@Date: 3&#x2F;4&#x2F;21 10:29 AM</span><br><span class="line">@Name: main.go</span><br><span class="line">@Description:</span><br><span class="line">*&#x2F;</span><br><span class="line">package main</span><br><span class="line">&#x2F;&#x2F;#cgo CFLAGS: -I.&#x2F;</span><br><span class="line">&#x2F;&#x2F;#cgo LDFLAGS: -L$&#123;SRCDIR&#125;&#x2F; -lnumber</span><br><span class="line">&#x2F;&#x2F;</span><br><span class="line">&#x2F;&#x2F;#include &quot;number.h&quot;</span><br><span class="line">import &quot;C&quot;</span><br><span class="line">import &quot;fmt&quot;</span><br><span class="line">&#x2F;&#x2F; 生成动态链接库</span><br><span class="line">&#x2F;&#x2F; gcc -shared -o libnumber.so number.c</span><br><span class="line">func main() &#123;</span><br><span class="line">	fmt.Println(C.number_add_mod(10, 5, 12))</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>动态链接库生成</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">gcc -shared -o libnumber.so number.c</span><br></pre></td></tr></table></figure>
+<p>运行</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">root@ubuntu:&#x2F;workspace&#x2F;gospace&#x2F;cppingo&#x2F;callso&#x2F;number# go build -o main main.go</span><br><span class="line">root@ubuntu:&#x2F;workspace&#x2F;gospace&#x2F;cppingo&#x2F;callso&#x2F;number# .&#x2F;main</span><br><span class="line">3</span><br></pre></td></tr></table></figure>
+<p>如果报错：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">.&#x2F;main: error while loading shared libraries: libnumber.so: cannot open shared object file: No such file or directory</span><br></pre></td></tr></table></figure>
+<p>是链接时没找到libnumber.so这个库，解决办法，指定链接时搜索的目录即可，其中一个办法如下:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">步骤：</span><br><span class="line">1）新建文件&#x2F;etc&#x2F;ld.so.conf.d&#x2F;test.conf</span><br><span class="line">2）在文件中指定链接搜索路径</span><br><span class="line">3）保存后执行ldconfig</span><br><span class="line">我的路径设置如下：</span><br><span class="line">root@ubuntu:&#x2F;etc&#x2F;ld.so.conf.d# ldconfig</span><br><span class="line">root@ubuntu:&#x2F;etc&#x2F;ld.so.conf.d# cat test.conf </span><br><span class="line">&#x2F;workspace&#x2F;gospace&#x2F;cppingo&#x2F;callso&#x2F;number</span><br><span class="line">&#x2F;workspace&#x2F;gospace&#x2F;cppingo&#x2F;callso&#x2F;callcppso</span><br></pre></td></tr></table></figure>
+<h3 id="c调用c-动态链接库"><a href="#c调用c-动态链接库" class="headerlink" title="c调用c++动态链接库"></a>c调用c++动态链接库</h3><p>ccallcpp目录</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">root@ubuntu:&#x2F;workspace&#x2F;gospace&#x2F;cppingo&#x2F;callso&#x2F;ccallcpp# tree</span><br><span class="line">.</span><br><span class="line">├── libperson.so</span><br><span class="line">├── main.go</span><br><span class="line">├── Makefile</span><br><span class="line">├── person.cpp</span><br><span class="line">├── person.h</span><br><span class="line">├── wrapper.cpp</span><br><span class="line">└── wrapper.h</span><br></pre></td></tr></table></figure>
+<p>person.h</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#ifndef PERSON_H_</span><br><span class="line">#define PERSON_H_</span><br><span class="line">#include &lt;string&gt;</span><br><span class="line">class Person &#123;</span><br><span class="line"> public:</span><br><span class="line">  Person(std::string name, int age);</span><br><span class="line">  ~Person() &#123;&#125;</span><br><span class="line">  const char *GetName() &#123; return name_.c_str(); &#125;</span><br><span class="line">  int GetAge() &#123; return age_; &#125;</span><br><span class="line"> private:</span><br><span class="line">  std::string name_;</span><br><span class="line">  int age_;</span><br><span class="line">&#125;;</span><br><span class="line">#endif &#x2F;&#x2F; PERSON_H_</span><br></pre></td></tr></table></figure>
+<p>person.cpp</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#include &lt;iostream&gt;</span><br><span class="line">#include &quot;person.h&quot;</span><br><span class="line">Person::Person(std::string name, int age)</span><br><span class="line">    : name_(name), age_(age) &#123;&#125;</span><br></pre></td></tr></table></figure>
+<p>由于c没有类的概念，因此需要写一个wrapper把c++中的类转成c的函数来调用<br>wrapper.h</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#ifndef WRAPPER_H_</span><br><span class="line">#define WRAPPER_H_</span><br><span class="line">#ifdef __cplusplus</span><br><span class="line">extern &quot;C&quot;</span><br><span class="line">&#123;</span><br><span class="line">#endif</span><br><span class="line">void *call_Person_Create();</span><br><span class="line">void call_Person_Destroy(void *);</span><br><span class="line">int call_Person_GetAge(void *);</span><br><span class="line">const char *call_Person_GetName(void *);</span><br><span class="line">#ifdef __cplusplus</span><br><span class="line">&#125;</span><br><span class="line">#endif</span><br><span class="line">#endif &#x2F;&#x2F; WRAPPER_H_</span><br></pre></td></tr></table></figure>
+<p>wrapper.cpp</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#include &quot;person.h&quot;</span><br><span class="line">#include &quot;wrapper.h&quot;</span><br><span class="line">#ifdef __cplusplus</span><br><span class="line">extern &quot;C&quot;&#123;</span><br><span class="line">#endif</span><br><span class="line">void *call_Person_Create() &#123;</span><br><span class="line">  return new Person(&quot;urmsone&quot;, 18);</span><br><span class="line">&#125;</span><br><span class="line">void call_Person_Destroy(void *p) &#123;</span><br><span class="line">  delete static_cast&lt;Person *&gt;(p);</span><br><span class="line">&#125;</span><br><span class="line">int call_Person_GetAge(void *p) &#123;</span><br><span class="line">  return static_cast&lt;Person *&gt;(p)-&gt;GetAge();</span><br><span class="line">&#125;</span><br><span class="line">const char *call_Person_GetName(void *p) &#123;</span><br><span class="line">  return static_cast&lt;Person *&gt;(p)-&gt;GetName();</span><br><span class="line">&#125;</span><br><span class="line">#ifdef __cplusplus</span><br><span class="line">&#125;</span><br><span class="line">#endif</span><br></pre></td></tr></table></figure>
+<p>main.go</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;*</span><br><span class="line">@Author: urmsone urmsone@163.com</span><br><span class="line">@Date: 3&#x2F;4&#x2F;21 1:53 PM</span><br><span class="line">@Name: main.go</span><br><span class="line">@Description:</span><br><span class="line">*&#x2F;</span><br><span class="line">package main</span><br><span class="line">&#x2F;*</span><br><span class="line">#cgo CFLAGS: -I .&#x2F;</span><br><span class="line">#cgo LDFLAGS: -L.&#x2F; -lperson</span><br><span class="line">#include &lt;stdlib.h&gt;</span><br><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">#include &quot;wrapper.h&quot;</span><br><span class="line">*&#x2F;</span><br><span class="line">import &quot;C&quot;</span><br><span class="line">import (</span><br><span class="line">	&quot;fmt&quot;</span><br><span class="line">)</span><br><span class="line">func main() &#123;</span><br><span class="line">	person :&#x3D; C.call_Person_Create()</span><br><span class="line">	defer C.call_Person_Destroy(person)</span><br><span class="line">	age :&#x3D; C.call_Person_GetAge(person)</span><br><span class="line">	fmt.Println(age)</span><br><span class="line">	&#x2F;&#x2F;defer C.free(unsafe.Pointer(age))</span><br><span class="line">	name :&#x3D; C.call_Person_GetName(person)</span><br><span class="line">	&#x2F;&#x2F;defer C.free(unsafe.Pointer(name))</span><br><span class="line">	fmt.Println(C.GoString(name))</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>生成动态库，动态库的位置和名字要于main函数中的<code>cgo LDFLAGS: -L./ -lperson</code>对应；</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">g++ person.cpp wrapper.cpp -fPIC -shared -o libperson.so</span><br></pre></td></tr></table></figure>
+<p><a href="https://chai2010.cn/advanced-go-programming-book/ch2-cgo/ch2-02-basic.html">Go语言高级编程</a><br>提到：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">CFLAGS部分，-I定义了头文件包含的检索目录。LDFLAGS部分，-L指定了链接时库文件检索目录，-l指定了链接时需要链接person库。</span><br><span class="line">因为C&#x2F;C++遗留的问题，C头文件检索目录可以是相对目录，但是库文件检索目录则需要绝对路径。在库文件的检索目录中可以通过$&#123;SRCDIR&#125;变量表示当前包目录的绝对路径：</span><br><span class="line">&#x2F;&#x2F; #cgo LDFLAGS: -L$&#123;SRCDIR&#125;&#x2F;libs -lfoo</span><br></pre></td></tr></table></figure>
+<p>但我这里使用的是相对路径，也没出问题。</p>
+<p>运行</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">root@ubuntu:&#x2F;workspace&#x2F;gospace&#x2F;cppingo&#x2F;callso&#x2F;ccallcpp# g++ person.cpp wrapper.cpp -fPIC -shared -o libperson.so</span><br><span class="line">root@ubuntu:&#x2F;workspace&#x2F;gospace&#x2F;cppingo&#x2F;callso&#x2F;ccallcpp# go build -o main main.go </span><br><span class="line">root@ubuntu:&#x2F;workspace&#x2F;gospace&#x2F;cppingo&#x2F;callso&#x2F;ccallcpp# .&#x2F;main </span><br><span class="line">.&#x2F;main: error while loading shared libraries: libperson.so: cannot open shared object file: No such file or directory</span><br><span class="line">root@ubuntu:&#x2F;workspace&#x2F;gospace&#x2F;cppingo&#x2F;callso&#x2F;ccallcpp# .&#x2F;main </span><br><span class="line">18</span><br><span class="line">urmsone</span><br></pre></td></tr></table></figure>
+<p><strong>流程：go-&gt;cgo-&gt;c-&gt;wrapper-c++</strong></p>
+<h2 id="二、回调"><a href="#二、回调" class="headerlink" title="二、回调"></a>二、回调</h2><p>###描述<br>主要记录一个常用的场景，参考官网<a href="https://github.com/golang/go/wiki/cgo#function-pointer-callbacks">链接</a> ，描述如下：<br>go调用c/c++的某个函数A（c/c++语言实现），然后把go语言实现的函数B作为参数传递给函数A，在执行函数A的过程中调用函数B。这个流程包含了go调用c/c++，和c/c++调用go两种情况。<br>调用过程：Go.main -&gt; C.A -&gt; Go.B<br>###场景：<br>go需要调用原生C++动态链接库，而动态库中某个函数A需要接收《函数指针》变量最为参数，通过《函数指针》来调用回调函数。当go调用函数A时，需要传递一个go语言实现的函数，并把该函数的指针传递给A。</p>
+<p>###实现<br>ccallbackgo目录：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">root@ubuntu:&#x2F;workspace&#x2F;gospace&#x2F;cppingo&#x2F;callbackso&#x2F;ccallbackgo# tree</span><br><span class="line">.</span><br><span class="line">├── cfunc.go</span><br><span class="line">├── clibrary.c</span><br><span class="line">├── clibrary.h</span><br><span class="line">├── libclibrary.so</span><br><span class="line">└── main.go</span><br></pre></td></tr></table></figure>
+<p>clibrary.h</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;&#x2F; 定义函数some_c_func和</span><br><span class="line">&#x2F;&#x2F; 函数指针（简单理解为回调函数的地址，通过该地址可之间调用回调函数）</span><br><span class="line">#ifndef CLIBRARY_H</span><br><span class="line">#define CLIBRARY_H</span><br><span class="line">typedef int (*callback_fcn)(int);</span><br><span class="line">void some_c_func(callback_fcn);</span><br><span class="line">#endif</span><br></pre></td></tr></table></figure>
+<p>clibrary.h</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;&#x2F; 实现some_c_func函数</span><br><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">#include &quot;clibrary.h&quot;</span><br><span class="line">void some_c_func(callback_fcn callback)&#123;</span><br><span class="line">    int arg &#x3D; 2;</span><br><span class="line">    printf(&quot;C.some_c_func(): calling callback with arg &#x3D;%d\n&quot;, arg);</span><br><span class="line">    int response &#x3D; callback(2);</span><br><span class="line">    printf(&quot;C.some_c_func(): callback response with %d\n&quot;, response);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>main.go</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;*</span><br><span class="line">@Author: urmsone urmsone@163.com</span><br><span class="line">@Date: 3&#x2F;4&#x2F;21 7:37 PM</span><br><span class="line">@Name: main.go</span><br><span class="line">@Description:</span><br><span class="line">1）在注释中声明回调函数callOnMeGo_cgo（该名字应与网关函数同名）</span><br><span class="line">2）实现回调函数,通过cgo的export callOnMeGo注释导出</span><br><span class="line">3）编写网关函数</span><br><span class="line">*&#x2F;</span><br><span class="line">package main</span><br><span class="line">&#x2F;*</span><br><span class="line">#cgo CFLAGS: -I .</span><br><span class="line">#cgo LDFLAGS: -L . -lclibrary</span><br><span class="line">#include &quot;clibrary.h&quot;</span><br><span class="line">int callOnMeGo_cgo(int in); &#x2F;&#x2F; Forward declaration.</span><br><span class="line">*&#x2F;</span><br><span class="line">import &quot;C&quot;</span><br><span class="line">import (</span><br><span class="line">	&quot;fmt&quot;</span><br><span class="line">	&quot;unsafe&quot;</span><br><span class="line">)</span><br><span class="line">&#x2F;&#x2F;export callOnMeGo</span><br><span class="line">func callOnMeGo(in int) int &#123;</span><br><span class="line">	fmt.Printf(&quot;Go.callOnMeGo(): called with arg &#x3D; %d\n&quot;, in)</span><br><span class="line">	return in + 1</span><br><span class="line">&#125;</span><br><span class="line">func main() &#123;</span><br><span class="line">	fmt.Printf(&quot;Go.main(): calling C function with callback to us\n&quot;)</span><br><span class="line">        &#x2F;&#x2F; C.callOnMeGo_cgo为注释中声明的回调函数名（网关函数名）</span><br><span class="line">        &#x2F;&#x2F; some_c_func里面的涵义是，先把C.callOnMeGo_cgo函数转成指针</span><br><span class="line">        &#x2F;&#x2F; 再通过C.callback_fcn把指针类型转成回调指针函数的类型</span><br><span class="line">	C.some_c_func((C.callback_fcn)(unsafe.Pointer(C.callOnMeGo_cgo)))</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>cfunc.go</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;*</span><br><span class="line">@Author: urmsone urmsone@163.com</span><br><span class="line">@Date: 3&#x2F;4&#x2F;21 7:45 PM</span><br><span class="line">@Name: cfunc.go</span><br><span class="line">@Description:</span><br><span class="line">*&#x2F;</span><br><span class="line">package main</span><br><span class="line">&#x2F;*</span><br><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">&#x2F;&#x2F; The gateway function</span><br><span class="line">int callOnMeGo_cgo(int in)&#123;</span><br><span class="line">	printf(&quot;C.callOnMeGo_cgo(): called with arg &#x3D; %d\n&quot;, in);</span><br><span class="line">	int callOnMeGo(int);</span><br><span class="line">	return callOnMeGo(in);</span><br><span class="line">&#125;</span><br><span class="line">*&#x2F;</span><br><span class="line">import &quot;C&quot;</span><br></pre></td></tr></table></figure>
+<p>生成动态链接库</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">gcc -shared -o libclibrary.so clibrary.c</span><br><span class="line"></span><br><span class="line">运行</span><br><span class="line">root@ubuntu:&#x2F;workspace&#x2F;gospace&#x2F;cppingo&#x2F;callbackso&#x2F;ccallbackgo# go build -o main *.go</span><br><span class="line">root@ubuntu:&#x2F;workspace&#x2F;gospace&#x2F;cppingo&#x2F;callbackso&#x2F;ccallbackgo# .&#x2F;main</span><br><span class="line">Go.main(): calling C function with callback to us</span><br><span class="line">C.some_c_func(): calling callback with arg &#x3D;2</span><br><span class="line">C.callOnMeGo_cgo(): called with arg &#x3D; 2</span><br><span class="line">Go.callOnMeGo(): called with arg &#x3D; 2</span><br><span class="line">C.some_c_func(): callback response with 3</span><br><span class="line">注意：要把网关函数一起build，否则会报错</span><br><span class="line">root@ubuntu:&#x2F;workspace&#x2F;gospace&#x2F;cppingo&#x2F;callbackso&#x2F;ccallbackgo# go build -o main main.go </span><br><span class="line"># command-line-arguments</span><br><span class="line">&#x2F;tmp&#x2F;go-build285429389&#x2F;b001&#x2F;_cgo_main.o:&#x2F;tmp&#x2F;go-build&#x2F;cgo-generated-wrappers:2: undefined reference to &#96;callOnMeGo_cgo&#39;</span><br></pre></td></tr></table></figure>
+<h3 id="三、内存管理"><a href="#三、内存管理" class="headerlink" title="三、内存管理"></a>三、内存管理</h3><ul>
+<li>go调c++<ul>
+<li>何时释放由c/c++开辟的内存空间</li>
+</ul>
+</li>
+<li>c++调go<ul>
+<li>何时释放go回调回来由go创建的对象（go有GC，可能c/c++ keep住的对象已被GC回收，导致内存地址invalid）</li>
+</ul>
+</li>
+</ul>
+<h3 id="四、c-语法学习"><a href="#四、c-语法学习" class="headerlink" title="四、c++语法学习"></a>四、c++语法学习</h3><p>将c++类转成c函数调用</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">void *call_Person_Create() &#123;</span><br><span class="line">  return new Person(&quot;urmsone&quot;, 18);</span><br><span class="line">&#125;</span><br><span class="line">void call_Person_Destroy(void *p) &#123;</span><br><span class="line">  delete static_cast&lt;Person *&gt;(p);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><code>void *call_Person_Create() </code>是一个指针函数，返回c++中Person类对象的指针，指针类型为void（因为c中没有c++中Person类对应的类型，所以类型为void）。</p>
+<p>这里涉及到c++类型转换符，static_cast,const_cast,reinterpret_cast,dynamic_cast<br>static_cast&lt;Person *&gt;(p)</p>
+<p>回调类型：<code>typedef void (*EnvSDK_Callback)(int, const char*, void*);</code></p>
+<h3 id="代码仓库"><a href="#代码仓库" class="headerlink" title="代码仓库"></a>代码仓库</h3><p><a href="https://github.com/UrmsOne/cppingo">源码仓库</a></p>
+<h3 id="参考："><a href="#参考：" class="headerlink" title="参考："></a>参考：</h3><p><a href="https://chai2010.cn/advanced-go-programming-book/">Go语言高级编程-gitbook</a>  </p>
 ]]></content>
       <categories>
-        <category>web</category>
+        <category>Go语言</category>
       </categories>
       <tags>
-        <tag>test</tag>
+        <tag>Go</tag>
       </tags>
   </entry>
 </search>
