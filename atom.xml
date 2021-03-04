@@ -44,7 +44,7 @@
     <link href="https://urmsone.github.io/2021/03/04/Advanced-go-call-cpp/"/>
     <id>https://urmsone.github.io/2021/03/04/Advanced-go-call-cpp/</id>
     <published>2021-03-04T13:25:13.000Z</published>
-    <updated>2021-03-04T13:28:01.689Z</updated>
+    <updated>2021-03-04T13:36:59.550Z</updated>
     
     
       
@@ -57,10 +57,12 @@
     
     
     
-    <category term="Go语言" scheme="https://urmsone.github.io/categories/Go%E8%AF%AD%E8%A8%80/"/>
+    <category term="编程语言" scheme="https://urmsone.github.io/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/"/>
     
     
-    <category term="Go" scheme="https://urmsone.github.io/tags/Go/"/>
+    <category term="Go语言" scheme="https://urmsone.github.io/tags/Go%E8%AF%AD%E8%A8%80/"/>
+    
+    <category term="C++" scheme="https://urmsone.github.io/tags/C/"/>
     
   </entry>
   
