@@ -23,7 +23,9 @@
     <content><![CDATA[<h1 id="Go进阶编程之Go调用C-（Linux）"><a href="#Go进阶编程之Go调用C-（Linux）" class="headerlink" title="Go进阶编程之Go调用C++（Linux）"></a>Go进阶编程之Go调用C++（Linux）</h1><h2 id="环境："><a href="#环境：" class="headerlink" title="环境："></a>环境：</h2><ul>
 <li>Ubuntu 18.04</li>
 <li>golang 1.14</li>
-<li>linux amd64<h2 id="一、了解调用流程"><a href="#一、了解调用流程" class="headerlink" title="一、了解调用流程"></a>一、了解调用流程</h2></li>
+<li>linux amd64</li>
+</ul>
+<h2 id="一、了解调用流程"><a href="#一、了解调用流程" class="headerlink" title="一、了解调用流程"></a>一、了解调用流程</h2><ul>
 <li>c调用c++动态链接库</li>
 <li>go通过cgo调用c</li>
 <li>从而达到go调用c++，其实是通过c来做中间层转换的功能</li>
